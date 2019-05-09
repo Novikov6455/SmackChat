@@ -34,9 +34,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(loginIntent)
     }
     fun addChannelClicked(view: View) {
-
     }
     fun sendMsgBtnClicked(view: View) {
-
     }
 }
