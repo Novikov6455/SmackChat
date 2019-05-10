@@ -49,7 +49,7 @@
     <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp" app:srcCompat="@drawable/profiledefault"
-            android:id="@+id/imageView" android:layout_marginTop="36dp"
+            android:id="@+id/createAvatarImageView" android:layout_marginTop="36dp"
             app:layout_constraintTop_toBottomOf="@+id/textView2" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
             android:onClick="generateUserAvatar"/>
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/backgroundColorBtn" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/imageView"
+            android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/createAvatarImageView"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/createUserBtn"
             android:layout_marginEnd="32dp" android:layout_marginRight="32dp" android:layout_marginLeft="32dp"
             android:layout_marginStart="32dp" android:background="@color/colorPrimary"
