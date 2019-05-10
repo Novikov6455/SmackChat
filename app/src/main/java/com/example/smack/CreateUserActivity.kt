@@ -24,7 +24,7 @@ class CreateUserActivity : AppCompatActivity() {
 
         if (color == 0) {
             userAvatar = "light$avatar"
-        }else {
+        } else {
             userAvatar = "dark$avatar"
         }
         val resourceId = resources.getIdentifier(userAvatar, "drawable", packageName)
