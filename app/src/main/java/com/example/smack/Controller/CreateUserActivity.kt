@@ -9,7 +9,6 @@ import android.view.View
 import android.widget.Toast
 import com.example.smack.R
 import com.example.smack.Services.AuthService
-import com.example.smack.Services.UserDataService
 import com.example.smack.Utilities.BROADCAST_USER_DATA_CHANGE
 import kotlinx.android.synthetic.main.activity_create_user.*
 import kotlin.random.Random
