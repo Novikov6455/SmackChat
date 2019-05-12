@@ -22,7 +22,7 @@ object UserDataService {
         AuthService.isLoggedIn = false
     }
 
-    fun returnAvatarColor(components: String) : Int {
+    fun returnAvatarColor(components: String): Int {
         val strippedColor = components
             .replace("[", "")
             .replace("]", "")

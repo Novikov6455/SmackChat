@@ -17,7 +17,7 @@
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
             android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="32dp"
-            android:hint="email "/>
+            android:hint="@string/email"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
             app:layout_constraintTop_toBottomOf="@+id/loginEmailTxt" android:layout_marginStart="32dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
             android:layout_marginEnd="32dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="32dp" android:hint="password "/>
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="32dp" android:hint="@string/password"/>
     <Button
             android:text="@string/login"
             android:layout_width="0dp"
