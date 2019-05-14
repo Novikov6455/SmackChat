@@ -13,13 +13,17 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.ArrayAdapter
 import android.widget.EditText
+import com.example.smack.Model.Channel
 import com.example.smack.R
 import com.example.smack.Services.AuthService
+import com.example.smack.Services.MessageService
 import com.example.smack.Services.UserDataService
 import com.example.smack.Utilities.BROADCAST_USER_DATA_CHANGE
 import com.example.smack.Utilities.SOCKET_URL
 import io.socket.client.IO
+import io.socket.emitter.Emitter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.nav_header_main.*
@@ -27,22 +31,32 @@ import kotlinx.android.synthetic.main.nav_header_main.*
 class MainActivity : AppCompatActivity() {
 
     val socket = IO.socket(SOCKET_URL)
+    lateinit var channelAdapter: ArrayAdapter<Channel>
+
+    private fun setupAdapters() {
+        channelAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, MessageService.channels)
+        channel_list.adapter = channelAdapter
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        socket.connect()
+        socket.on("channelCreated", onNewChannel)
 
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
+        setupAdapters()
     }
 
     override fun onResume() {
         LocalBroadcastManager.getInstance(this).registerReceiver(userDataChangeReceiver,
             IntentFilter(BROADCAST_USER_DATA_CHANGE))
-        socket.connect()
+
         super.onResume()
     }
 
@@ -53,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val userDataChangeReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
+        override fun onReceive(context: Context, intent: Intent?) {
             if (AuthService.isLoggedIn) {
                 userNameNavHeader.text = UserDataService.name
                 userEmailNavHeader.text = UserDataService.email
@@ -62,6 +76,12 @@ class MainActivity : AppCompatActivity() {
                 userImageNavHeader.setImageResource(resourceId)
                 userImageNavHeader.setBackgroundColor(UserDataService.returnAvatarColor(UserDataService.avatarColor))
                 loginBtnNavHeader.text = "Logout"
+
+                MessageService.getChannels(context) { complete ->
+                    if (complete) {
+                        channelAdapter.notifyDataSetChanged()
+                    }
+                }
             }
         }
     }
@@ -73,6 +93,7 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
+
     fun loginBtnNavClicked(view: View) {
 
         if (AuthService.isLoggedIn) {
@@ -88,6 +109,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(loginIntent)
         }
     }
+
     fun addChannelClicked(view: View) {
         if (AuthService.isLoggedIn) {
             val builder = AlertDialog.Builder(this)
@@ -103,7 +125,6 @@ class MainActivity : AppCompatActivity() {
 
                     // Create channel with the channel name and description
                     socket.emit("newChannel", channelName, channelDesc)
-
                 }
                 .setNegativeButton("Cancel") { dialogInterface, i ->
                     // Cancel and close the dialog
@@ -111,9 +132,23 @@ class MainActivity : AppCompatActivity() {
                 .show()
         }
     }
+
+    private val onNewChannel = Emitter.Listener { args ->
+        runOnUiThread {
+            val channelName = args[0] as String
+            val channelDescription = args[1] as String
+            val channelId = args[2] as String
+
+            val newChannel = Channel(channelName, channelDescription, channelId)
+            MessageService.channels.add(newChannel)
+            channelAdapter.notifyDataSetChanged()
+        }
+    }
+
     fun sendMsgBtnClicked(view: View) {
         hideKeyboard()
     }
+
     private fun hideKeyboard() {
         val inputManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
@@ -121,5 +156,4 @@ class MainActivity : AppCompatActivity() {
             inputManager.hideSoftInputFromWindow(currentFocus.windowToken, 0)
         }
     }
-
 }

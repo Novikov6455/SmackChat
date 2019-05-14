@@ -13,7 +13,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true // This line here added for vector ability
+//        vectorDrawables.useSupportLibrary = true // This line here added for vector ability
     }
     buildTypes {
         release {

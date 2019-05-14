@@ -9,9 +9,10 @@ import android.view.View
 import android.widget.Toast
 import com.example.smack.R
 import com.example.smack.Services.AuthService
+import com.example.smack.Services.UserDataService
 import com.example.smack.Utilities.BROADCAST_USER_DATA_CHANGE
 import kotlinx.android.synthetic.main.activity_create_user.*
-import kotlin.random.Random
+import java.util.Random
 
 class CreateUserActivity : AppCompatActivity() {
 
@@ -25,7 +26,7 @@ class CreateUserActivity : AppCompatActivity() {
     }
 
     fun generateUserAvatar(view: View) {
-        val random = Random
+        val random = Random()
         val color = random.nextInt(2)
         val avatar = random.nextInt(28)
 
@@ -39,7 +40,7 @@ class CreateUserActivity : AppCompatActivity() {
     }
 
     fun generateColorClicked(view: View) {
-        val random = Random
+        val random = Random()
         val r = random.nextInt(255)
         val g = random.nextInt(255)
         val b = random.nextInt(255)
