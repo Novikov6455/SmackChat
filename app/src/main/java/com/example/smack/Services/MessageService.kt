@@ -8,6 +8,7 @@ import com.android.volley.toolbox.Volley
 import com.example.smack.Model.Channel
 import com.example.smack.Utilities.URL_GET_CHANNELS
 import org.json.JSONException
+import kotlin.collections.ArrayList
 
 object MessageService {
     val channels = ArrayList<Channel>()

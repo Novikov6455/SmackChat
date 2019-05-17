@@ -46,10 +46,10 @@ class CreateUserActivity : AppCompatActivity() {
         val b = random.nextInt(255)
 
         createAvatarImageView.setBackgroundColor(Color.rgb(r, g, b))
-
+        // harmonization color coding iOS and Android
         val savedR = r.toDouble() / 255
-        val savedG = r.toDouble() / 255
-        val savedB = r.toDouble() / 255
+        val savedG = g.toDouble() / 255
+        val savedB = b.toDouble() / 255
 
         avatarColor = "[$savedR, $savedG, $savedB, 1]"
     }
@@ -69,6 +69,9 @@ class CreateUserActivity : AppCompatActivity() {
                                 if (createSuccess) {
                                     val userDataChange = Intent(BROADCAST_USER_DATA_CHANGE)
                                     LocalBroadcastManager.getInstance(this).sendBroadcast(userDataChange)
+                                    println(UserDataService.name)
+                                    println(UserDataService.avatarName)
+                                    println(UserDataService.avatarColor)
                                     enableSpinner(false)
                                     finish()
                                 } else {
