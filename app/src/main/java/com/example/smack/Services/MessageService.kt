@@ -29,12 +29,10 @@ object MessageService {
                     this.channels.add(newChannel)
                 }
                 complete(true)
-
             } catch (e: JSONException) {
                 Log.d("JSON", "EXC:" + e.localizedMessage)
                 complete(false)
             }
-
         }, Response.ErrorListener { error ->
             Log.d("ERROR", "Could not retrieve channels")
             complete(false)
@@ -73,7 +71,6 @@ object MessageService {
                     this.messages.add(newMessage)
                 }
                 complete(true)
-
             } catch (e: JSONException) {
                 Log.d("JSON", "EXC:" + e.localizedMessage)
                 complete(false)
@@ -92,7 +89,6 @@ object MessageService {
                 headers.put("Authorization", "Bearer ${App.prefs.authToken}")
                 return headers
             }
-
         }
         App.prefs.requestQueue.add(messagesRequest)
     }
@@ -104,6 +100,4 @@ object MessageService {
     fun clearChannels() {
         channels.clear()
     }
-
-
 }

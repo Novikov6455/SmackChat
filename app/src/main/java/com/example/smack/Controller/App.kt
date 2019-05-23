@@ -12,5 +12,4 @@ class App : Application() {
         prefs = SharedPrefs(applicationContext)
         super.onCreate()
     }
-
 }

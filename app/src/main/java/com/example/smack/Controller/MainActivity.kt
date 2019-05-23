@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     val socket = IO.socket(SOCKET_URL)
     lateinit var channelAdapter: ArrayAdapter<Channel>
     lateinit var messageAdapter: MessageAdapter
-    var selectedChannel : Channel? = null
+    var selectedChannel: Channel? = null
 
     private fun setupAdapters() {
         channelAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, MessageService.channels)
@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         messageListView.layoutManager = layoutManager
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +66,6 @@ class MainActivity : AppCompatActivity() {
         LocalBroadcastManager.getInstance(this).registerReceiver(userDataChangeReceiver,
             IntentFilter(BROADCAST_USER_DATA_CHANGE))
 
-
         channel_list.setOnItemClickListener { _, _, i, _ ->
             selectedChannel = MessageService.channels[i]
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -75,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (App.prefs.isLoggedIn) {
-            AuthService.findUserByEmail(this){}
+            AuthService.findUserByEmail(this) {}
         }
     }
 
@@ -121,7 +119,7 @@ class MainActivity : AppCompatActivity() {
         mainChannelName.text = "#${selectedChannel?.name}"
         // down load messages for channel
         if (selectedChannel != null) {
-            MessageService.getMessages(selectedChannel!!.id) {complete ->
+            MessageService.getMessages(selectedChannel!!.id) { complete ->
                 if (complete) {
                     messageAdapter.notifyDataSetChanged()
                     if (messageAdapter.itemCount > 0) {
