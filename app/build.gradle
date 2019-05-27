@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -38,4 +37,9 @@ dependencies {
         // excluding org.json which is provided by Android
         exclude group: 'org.json', module: 'json'
     }
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+}
+
+kapt {
+    generateStubs = true
 }
