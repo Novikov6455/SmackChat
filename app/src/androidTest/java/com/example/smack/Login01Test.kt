@@ -152,7 +152,45 @@ class Login01Test {
         )
         sleep(3000)
         textView.check(matches(withText("Olga")))
+        val appCompatButton3 = onView(
+            allOf(
+                withId(R.id.loginBtnNavHeader), withText("Logout"),
+                childAtPosition(
+                    allOf(
+                        withId(R.id.nav_drawer_header_include),
+                        childAtPosition(
+                            withClassName(`is`("android.widget.RelativeLayout")),
+                            0
+                        )
+                    ),
+                    3
+                ),
+                isDisplayed()
+            )
+        )
+        appCompatButton3.perform(click())
+        Thread.sleep(1000)
+
+
+        val button = onView(
+            allOf(
+                withId(R.id.loginBtnNavHeader),
+                childAtPosition(
+                    allOf(
+                        withId(R.id.nav_drawer_header_include),
+                        childAtPosition(
+                            IsInstanceOf.instanceOf(android.widget.RelativeLayout::class.java),
+                            0
+                        )
+                    ),
+                    3
+                ),
+                isDisplayed()
+            )
+        )
+        button.check(matches(isDisplayed()))
     }
+
 
     private fun childAtPosition(
         parentMatcher: Matcher<View>, position: Int
