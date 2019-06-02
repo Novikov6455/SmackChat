@@ -17,7 +17,7 @@ import java.lang.Thread.sleep
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class Login01Test {
+class LoginLogoutTest01 {
 
     @Rule
     @JvmField
@@ -71,7 +71,7 @@ class Login01Test {
             )
         )
         loginScreenLoginBtn.perform(click())
-        sleep(1000)
+        sleep(2000)
 
         // check what user name is displayed
         val textView = onView(
