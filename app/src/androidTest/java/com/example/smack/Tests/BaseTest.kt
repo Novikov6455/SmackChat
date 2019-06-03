@@ -9,4 +9,5 @@ open class BaseTest {
     val validEmail = "o@o.com"
     val validPassword = "123456"
     val validUserName = "Olga"
+    val invalidEmail = "xxxxxx@x.com"
 }
