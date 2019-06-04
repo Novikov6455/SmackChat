@@ -1,8 +1,22 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        mavenLocal()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    }
+
+    dependencies {
+        classpath 'com.shazam.fork:fork-gradle-plugin:3.7.0-SNAPSHOT'
+    }
+}
+
+apply plugin: 'com.shazam.fork'
 
 android {
     compileSdkVersion 28
@@ -37,5 +51,24 @@ dependencies {
     api ('io.socket:socket.io-client:1.0.0') {
         // excluding org.json which is provided by Android
         exclude group: 'org.json', module: 'json'
+    }
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+}
+
+kapt {
+    generateStubs = true
+}
+
+fork {
+    title = "My acceptance tests"
+    testPackage = "com.example.smack"
+    fallbackToScreenshots = true
+    poolingStrategy {
+        computed {
+            characteristic = "sw"
+            groups {
+                allDevices = 0
+            }
+        }
     }
 }
