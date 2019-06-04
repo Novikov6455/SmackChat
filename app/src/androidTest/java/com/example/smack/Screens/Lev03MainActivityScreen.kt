@@ -1,7 +1,10 @@
 package com.example.smack.Screens
 
+import android.support.test.espresso.DataInteraction
+import android.support.test.espresso.Espresso
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
+import android.support.test.espresso.assertion.ViewAssertions
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.view.View
@@ -35,7 +38,27 @@ class Lev03MainActivityScreen {
 
     fun validUserNameIsDisplayed(validUserName: String) {
     userNameTextView.check(matches(withText(validUserName)))
-}
+    }
+
+    // tap first channel in list of channels
+    private val listOfChannels: DataInteraction = Espresso.onData(Matchers.anything())
+        .inAdapterView(
+            Matchers.allOf(
+                withId(R.id.channel_list),
+                childAtPosition(
+                    withClassName(Matchers.`is`("android.widget.RelativeLayout")),
+                    1
+                )
+            )
+        )
+        .atPosition(0)
+
+    fun chooseChannelFromList(atPosition: Int): Lev04ChannelContent {
+        listOfChannels.atPosition(atPosition).perform(click())
+        return Lev04ChannelContent()
+    }
+
+
 
     // right LOGOUT
     private val navHeaderLogoutBtn = onView(

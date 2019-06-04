@@ -10,4 +10,6 @@ open class BaseTest {
     val validPassword = "123456"
     val validUserName = "Olga"
     val invalidEmail = "xxxxxx@x.com"
+    val validChannelName01 = "#first forever "
+    val validChannelName03 = "#Olga news channel"
 }

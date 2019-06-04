@@ -28,5 +28,4 @@ class Lev01NavHeaderScreen {
         navHeaderLoginBtn.perform(click())
         return Lev02LoginScreen()
     }
-
 }
