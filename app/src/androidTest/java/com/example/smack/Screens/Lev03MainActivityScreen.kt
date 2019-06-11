@@ -59,17 +59,6 @@ class Lev03MainActivityScreen  {
         )
         .atPosition(0)
 
-//    var listOfChannelsLenght: Int
-//        get() = listOfChannels.hashCode()
-//        set(value) {
-//            var i: Int = 0
-//        }
-//    fun isChannelFromListOfChannelsExist(atPosition: Int): Boolean {
-//        swipeUp()
-//        listOfChannels.atPosition(atPosition)
-//            .check(matches(isDisplayed()))
-//        return true
-//    }
 //
     fun chooseChannelFromList(atPosition: Int): Lev04ChannelContentScreen {
         listOfChannels.atPosition(atPosition).perform(click())
@@ -100,28 +89,6 @@ class Lev03MainActivityScreen  {
             .check(matches(isDisplayed()))
         return this
     }
-//
-//    private val listOfChannels01: DataInteraction = Espresso.onData(Matchers.anything())
-//        .inAdapterView(
-//            Matchers.allOf(
-//                withId(R.id.channel_list),
-//                childAtPosition(
-//                    withClassName(Matchers.`is`("android.widget.RelativeLayout")),
-//                    1
-//                )
-//            )
-//        )
-//        .atPosition(0)
-
-//    fun validCellIsDisplayed(channelName: String): Boolean {
-//        Matchers.allOf(
-//            withId(android.R.id.text1),
-////            withId(R.id.channel_list),
-//            withText("#$channelName")
-//        )
-//        listOfChannels01.check(matches(withText("#$channelName")))
-//        return true
-//    }
 
 
     // right LOGOUT
