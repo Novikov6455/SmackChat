@@ -9,7 +9,7 @@ import com.example.smack.R
 import org.hamcrest.CoreMatchers
 import org.hamcrest.Matchers
 
-class Lev04ChannelContent {
+class Lev04ChannelContentScreen {
     private val toolbarBtn: ViewInteraction = Espresso.onView(
         CoreMatchers.allOf(
             // withId(R.id.toolbar),

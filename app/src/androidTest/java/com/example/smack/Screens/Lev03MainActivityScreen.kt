@@ -2,22 +2,28 @@ package com.example.smack.Screens
 
 import android.support.test.espresso.DataInteraction
 import android.support.test.espresso.Espresso
+import android.support.test.espresso.Espresso.onData
 import android.support.test.espresso.Espresso.onView
+import android.support.test.espresso.action.ScrollToAction
 import android.support.test.espresso.action.ViewActions.click
-import android.support.test.espresso.assertion.ViewAssertions
+import android.support.test.espresso.action.ViewActions.swipeUp
 import android.support.test.espresso.assertion.ViewAssertions.matches
+import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import com.example.smack.R
+import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers
 import org.hamcrest.TypeSafeMatcher
 import org.hamcrest.core.IsInstanceOf
 
-class Lev03MainActivityScreen {
+class Lev03MainActivityScreen  {
+
+
     // check what user name is displayed
     private val userNameTextView = onView(
         Matchers.allOf(
@@ -37,7 +43,7 @@ class Lev03MainActivityScreen {
     )
 
     fun validUserNameIsDisplayed(validUserName: String) {
-    userNameTextView.check(matches(withText(validUserName)))
+        userNameTextView.check(matches(withText(validUserName)))
     }
 
     // tap first channel in list of channels
@@ -53,11 +59,69 @@ class Lev03MainActivityScreen {
         )
         .atPosition(0)
 
-    fun chooseChannelFromList(atPosition: Int): Lev04ChannelContent {
+//    var listOfChannelsLenght: Int
+//        get() = listOfChannels.hashCode()
+//        set(value) {
+//            var i: Int = 0
+//        }
+//    fun isChannelFromListOfChannelsExist(atPosition: Int): Boolean {
+//        swipeUp()
+//        listOfChannels.atPosition(atPosition)
+//            .check(matches(isDisplayed()))
+//        return true
+//    }
+//
+    fun chooseChannelFromList(atPosition: Int): Lev04ChannelContentScreen {
         listOfChannels.atPosition(atPosition).perform(click())
-        return Lev04ChannelContent()
+        return Lev04ChannelContentScreen()
     }
 
+    // add channel ability
+    private val addChannelBtn = Espresso.onView(
+        Matchers.allOf(
+            ViewMatchers.withId(R.id.addChannelBtn),
+            ViewMatchers.isDisplayed()
+        )
+    )
+
+    fun tapAddChannelBtn(): Lev04AddChannelScreen {
+        addChannelBtn.perform(click())
+        return Lev04AddChannelScreen()
+    }
+
+
+    fun validChannelNameCellIsDisplayed(channelName: String): Lev03MainActivityScreen {
+        onView(
+            allOf(
+                withId(android.R.id.text1),
+                withText("#$channelName")
+            )
+        )
+            .check(matches(isDisplayed()))
+        return this
+    }
+//
+//    private val listOfChannels01: DataInteraction = Espresso.onData(Matchers.anything())
+//        .inAdapterView(
+//            Matchers.allOf(
+//                withId(R.id.channel_list),
+//                childAtPosition(
+//                    withClassName(Matchers.`is`("android.widget.RelativeLayout")),
+//                    1
+//                )
+//            )
+//        )
+//        .atPosition(0)
+
+//    fun validCellIsDisplayed(channelName: String): Boolean {
+//        Matchers.allOf(
+//            withId(android.R.id.text1),
+////            withId(R.id.channel_list),
+//            withText("#$channelName")
+//        )
+//        listOfChannels01.check(matches(withText("#$channelName")))
+//        return true
+//    }
 
 
     // right LOGOUT

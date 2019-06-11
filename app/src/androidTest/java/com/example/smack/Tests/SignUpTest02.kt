@@ -24,7 +24,7 @@ class SignUpTest02 {
         val validCreatedUserName = (toCreateUserName + dateString())
         val toCreateUserEmail = "@test.com"
         val validCreatedUserEmail = dateString().plus(toCreateUserEmail)
-        val validCreatedUserPassword = "123456"
+        val validCreatedUserPassword = "654321"
 
         val lev00AppToolbarScreen = Lev00AppToolbarScreen()
         val lev01NavHeaderScreen = lev00AppToolbarScreen.tapToolbarBtn()
@@ -45,12 +45,12 @@ class SignUpTest02 {
         lev03SignUpScreen.generateBackgroundColor()
         lev03SignUpScreen.generateBackgroundColor()
         lev03SignUpScreen.generateBackgroundColor()
-        Thread.sleep(1000)
+        Thread.sleep(2000)
 
         val lev03MainActivityScreen = lev03SignUpScreen.createUser() // relocate to lev03MainActivityScreen
         println(validCreatedUserName)
 
-        Thread.sleep(2000)
+        Thread.sleep(3000)
         lev03MainActivityScreen.validUserNameIsDisplayed(validCreatedUserName)
         Thread.sleep(1000)
         lev03MainActivityScreen.submitLogOut()
