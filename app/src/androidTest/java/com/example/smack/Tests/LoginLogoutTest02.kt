@@ -24,17 +24,13 @@ class LoginLogoutTest02 : BaseTest() {
     fun userLogInOutHappyPath() {
         val lev00AppToolbarScreen = Lev00AppToolbarScreen()
         val lev01NavHeaderScreen = lev00AppToolbarScreen.tapToolbarBtn()
-//        sleep(1000)
         val lev02LoginScreen = lev01NavHeaderScreen.tapLogInBtn()
-//        sleep(1000)
+
         lev02LoginScreen.enterLoginEmail(validEmail)
-//        sleep(1000)
         lev02LoginScreen.enterLoginPassword(validPassword)
-//        sleep(3000)
+
         val lev03MainActivityScreen = lev02LoginScreen.tapLoginSubmitBtn()
-        sleep(3000)
         lev03MainActivityScreen.validUserNameIsDisplayed(validUserName)
-        sleep(10000)
         lev03MainActivityScreen.submitLogOut()
     }
 
@@ -42,15 +38,12 @@ class LoginLogoutTest02 : BaseTest() {
     fun invalidLogIn() {
         val lev00AppToolbarScreen = Lev00AppToolbarScreen()
         val lev01NavHeaderScreen = lev00AppToolbarScreen.tapToolbarBtn()
-        sleep(1000)
         val lev02LoginScreen = lev01NavHeaderScreen.tapLogInBtn()
-        sleep(1000)
+
         lev02LoginScreen.enterLoginEmail(invalidEmail)
-        sleep(1000)
         lev02LoginScreen.enterLoginPassword(validPassword)
-        sleep(3000)
+
         lev02LoginScreen.tapLoginSubmitBtn()
-        sleep(3000)
         assert(lev02LoginScreen.loginResult())
         // teardown
         pressBack()
@@ -60,15 +53,12 @@ class LoginLogoutTest02 : BaseTest() {
     fun emptyEmail() {
         val lev00AppToolbarScreen = Lev00AppToolbarScreen()
         val lev01NavHeaderScreen = lev00AppToolbarScreen.tapToolbarBtn()
-        sleep(1000)
         val lev02LoginScreen = lev01NavHeaderScreen.tapLogInBtn()
-        sleep(1000)
+
         lev02LoginScreen.enterLoginEmail("")
-        sleep(1000)
         lev02LoginScreen.enterLoginPassword(validPassword)
-        sleep(3000)
+
         lev02LoginScreen.tapLoginSubmitBtn()
-        sleep(3000)
         assert(lev02LoginScreen.loginResult())
         // teardown
         pressBack()
@@ -78,15 +68,12 @@ class LoginLogoutTest02 : BaseTest() {
     fun emptyPasswordl() {
         val lev00AppToolbarScreen = Lev00AppToolbarScreen()
         val lev01NavHeaderScreen = lev00AppToolbarScreen.tapToolbarBtn()
-        sleep(1000)
         val lev02LoginScreen = lev01NavHeaderScreen.tapLogInBtn()
-        sleep(1000)
+
         lev02LoginScreen.enterLoginEmail(validEmail)
-        sleep(1000)
         lev02LoginScreen.enterLoginPassword("")
-        sleep(3000)
+
         lev02LoginScreen.tapLoginSubmitBtn()
-        sleep(3000)
         assert(lev02LoginScreen.loginResult())
         // teardown
         pressBack()
@@ -96,15 +83,13 @@ class LoginLogoutTest02 : BaseTest() {
     fun emptyEmailEmptyPassword() {
         val lev00AppToolbarScreen = Lev00AppToolbarScreen()
         val lev01NavHeaderScreen = lev00AppToolbarScreen.tapToolbarBtn()
-        sleep(1000)
         val lev02LoginScreen = lev01NavHeaderScreen.tapLogInBtn()
-        sleep(1000)
+
+
         lev02LoginScreen.enterLoginEmail("")
-        sleep(1000)
         lev02LoginScreen.enterLoginPassword("")
-        sleep(3000)
+
         lev02LoginScreen.tapLoginSubmitBtn()
-        sleep(3000)
         assert(lev02LoginScreen.loginResult())
         // teardown
         pressBack()

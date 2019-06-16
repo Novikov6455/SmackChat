@@ -53,6 +53,7 @@ object AuthService {
         jsonBody.put("email", email)
         jsonBody.put("password", password)
         val requestBody = jsonBody.toString()
+        IdlingResourceHelper.countingIdlingResource.increment()
 
         val loginRequest = object : JsonObjectRequest(Method.POST, URL_LOGIN, null, Response.Listener { response ->
             // this is where we  parse our json object
@@ -61,14 +62,17 @@ object AuthService {
                 App.prefs.userEmail = response.getString("user")
                 App.prefs.authToken = response.getString("token")
                 App.prefs.isLoggedIn = true
+                IdlingResourceHelper.countingIdlingResource.decrement()
                 complete(true)
             } catch (e: JSONException) {
                 Log.d("JSON", "EXC:" + e.localizedMessage)
+                IdlingResourceHelper.countingIdlingResource.decrement()
                 complete(false)
             }
         }, Response.ErrorListener { error ->
             // this is where we handle with our error
             Log.d("ERROR", "Could not login user: $error")
+            IdlingResourceHelper.countingIdlingResource.decrement()
             complete(false)
         }) {
 
