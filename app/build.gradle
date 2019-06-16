@@ -20,13 +20,15 @@ apply plugin: 'com.shazam.fork'
 
 android {
     compileSdkVersion 28
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.example.smack"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.example.smack.Utilities.RxIdlerTestRunner"
 //        vectorDrawables.useSupportLibrary = true // This line here added for vector ability
     }
     buildTypes {
@@ -46,6 +48,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'com.squareup.rx.idler:rx2-idler:0.9.1'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     api 'com.android.volley:volley:1.1.1'
     api ('io.socket:socket.io-client:1.0.0') {
