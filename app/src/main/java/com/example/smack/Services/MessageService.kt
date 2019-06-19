@@ -18,6 +18,8 @@ object MessageService {
     fun getChannels(complete: (Boolean) -> Unit) {
 
         val channelsRequest = object : JsonArrayRequest(Method.GET, URL_GET_CHANNELS, null, Response.Listener { response ->
+            IdlingResourceHelper.countingIdlingResource.increment()
+
             try {
                 for (x in 0 until response.length()) {
                     val channel = response.getJSONObject(x)
@@ -28,13 +30,16 @@ object MessageService {
                     val newChannel = Channel(name, chanDesc, channelId)
                     this.channels.add(newChannel)
                 }
+                IdlingResourceHelper.countingIdlingResource.decrement()
                 complete(true)
             } catch (e: JSONException) {
                 Log.d("JSON", "EXC:" + e.localizedMessage)
+                IdlingResourceHelper.countingIdlingResource.decrement()
                 complete(false)
             }
         }, Response.ErrorListener { error ->
             Log.d("ERROR", "Could not retrieve channels")
+            IdlingResourceHelper.countingIdlingResource.decrement()
             complete(false)
         }) {
             override fun getBodyContentType(): String {
@@ -56,6 +61,8 @@ object MessageService {
 
         val messagesRequest = object : JsonArrayRequest(Method.GET, url, null, Response.Listener { response ->
             clearMessages()
+            IdlingResourceHelper.countingIdlingResource.increment()
+
             try {
                 for (x in 0 until response.length()) {
                     val message = response.getJSONObject(x)
@@ -70,13 +77,16 @@ object MessageService {
                     val newMessage = Message(messageBody, userName, channelId, userAvatar, userAvatarColor, id, timeStamp)
                     this.messages.add(newMessage)
                 }
+                IdlingResourceHelper.countingIdlingResource.decrement()
                 complete(true)
             } catch (e: JSONException) {
                 Log.d("JSON", "EXC:" + e.localizedMessage)
+                IdlingResourceHelper.countingIdlingResource.decrement()
                 complete(false)
             }
         }, Response.ErrorListener {
             Log.d("ERROR", "Could not retrieve channels")
+            IdlingResourceHelper.countingIdlingResource.decrement()
             complete(false)
         }) {
 

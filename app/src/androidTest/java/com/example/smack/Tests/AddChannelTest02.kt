@@ -5,6 +5,8 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.example.smack.Controller.MainActivity
 import com.example.smack.Screens.Lev00AppToolbarScreen
+import com.example.smack.Screens.Lev02LoginScreen
+import com.example.smack.Utilities.RecyclerViewItemMatcher
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -23,35 +25,27 @@ class AddChannelTest02 : BaseTest() {
     @Test
     fun addChannelTest() {
     //      setup
-        val lev00AppToolbarScreen = Lev00AppToolbarScreen()
-        val lev01NavHeaderScreen = lev00AppToolbarScreen.tapToolbarBtn()
-        Thread.sleep(1000)
-        val lev02LoginScreen = lev01NavHeaderScreen.tapLogInBtn()
-        Thread.sleep(1000)
-        lev02LoginScreen.enterLoginEmail(validEmail)
-        Thread.sleep(1000)
-        lev02LoginScreen.enterLoginPassword(validPassword)
-        Thread.sleep(3000)
-        var lev03MainActivityScreen = lev02LoginScreen.tapLoginSubmitBtn()
-        Thread.sleep(3000)
+        val lev02LoginScreen: Lev02LoginScreen = startAppAndGoToLoginScreen()
+        var lev03MainActivityScreen = loginWithValidCredentials()
 
     //      test functionalities
         val lev04AddChannelScreen = lev03MainActivityScreen.tapAddChannelBtn()
-        Thread.sleep(1000)
         lev04AddChannelScreen.enterChannelName(validCreatedChannelName)
-        Thread.sleep(1000)
         lev04AddChannelScreen.enterChannelDescription(validCreatedChannelDescription)
-        Thread.sleep(1000)
         lev04AddChannelScreen.addChannelSubmit()
-        Thread.sleep(2000)
         swipeUp()
-        Thread.sleep(2000)
-        swipeUp()
-        Thread.sleep(2000)
+//        lev03MainActivityScreen.channelNameIsInListOfChannels(validCreatedChannelName)
         lev03MainActivityScreen.validChannelNameCellIsDisplayed(validCreatedChannelName)
 
-    //      teardown
-        Thread.sleep(1000)
+
+//       in the next line is problem  ******************************************************************
+//        lev03MainActivityScreen.tapChannel(validCreatedChannelName)
+
+
+//        val lev04ChannelContentScreen = lev03MainActivityScreen.tapChannel("#$validCreatedChannelName")
+//        lev04ChannelContentScreen.checkValidChannelIsPresent("#$validCreatedChannelName")
+        //      teardown
+//        lev03MainActivityScreen = lev04ChannelContentScreen.tapToolbarBtn()
         lev03MainActivityScreen.submitLogOut()
 
     }
@@ -62,6 +56,10 @@ class AddChannelTest02 : BaseTest() {
 //        val outDateString = SimpleDateFormat("yyyyMMdd HH:mm:ss", Locale.getDefault())
         val outDateString = SimpleDateFormat("yy/MM/dd HH:mm:ss", Locale.getDefault())
         return outDateString.format(convertedDate)
+    }
+
+    fun isChannelPresentInListOfChannels(channelName: String) {
+        val result = RecyclerViewItemMatcher.channelNameMatches(channelName)
     }
 
 

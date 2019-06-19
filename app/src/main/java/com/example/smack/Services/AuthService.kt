@@ -27,12 +27,15 @@ object AuthService {
         jsonBody.put("email", email)
         jsonBody.put("password", password)
         val requestBody = jsonBody.toString()
+        IdlingResourceHelper.countingIdlingResource.increment()
 
         val registerRequest = object : StringRequest(Method.POST, URL_REGISTER, Response.Listener { response ->
             println(response)
+            IdlingResourceHelper.countingIdlingResource.decrement()
             complete(true)
         }, Response.ErrorListener { error ->
             Log.d("ERROR", "Could not register User: $error")
+            IdlingResourceHelper.countingIdlingResource.decrement()
             complete(false)
         }) {
             override fun getBodyContentType(): String {
@@ -53,6 +56,7 @@ object AuthService {
         jsonBody.put("email", email)
         jsonBody.put("password", password)
         val requestBody = jsonBody.toString()
+        IdlingResourceHelper.countingIdlingResource.increment()
 
         val loginRequest = object : JsonObjectRequest(Method.POST, URL_LOGIN, null, Response.Listener { response ->
             // this is where we  parse our json object
@@ -61,14 +65,17 @@ object AuthService {
                 App.prefs.userEmail = response.getString("user")
                 App.prefs.authToken = response.getString("token")
                 App.prefs.isLoggedIn = true
+                IdlingResourceHelper.countingIdlingResource.decrement()
                 complete(true)
             } catch (e: JSONException) {
                 Log.d("JSON", "EXC:" + e.localizedMessage)
+                IdlingResourceHelper.countingIdlingResource.decrement()
                 complete(false)
             }
         }, Response.ErrorListener { error ->
             // this is where we handle with our error
             Log.d("ERROR", "Could not login user: $error")
+            IdlingResourceHelper.countingIdlingResource.decrement()
             complete(false)
         }) {
 
@@ -91,6 +98,8 @@ object AuthService {
         jsonBody.put("avatarName", avatarName)
         jsonBody.put("avatarColor", avatarColor)
         val requestBody = jsonBody.toString()
+        IdlingResourceHelper.countingIdlingResource.increment()
+
 
         val createRequest = object : JsonObjectRequest(Method.POST, URL_CREATE_USER, null, Response.Listener { response ->
             // this is where we  parse our json object
@@ -101,14 +110,17 @@ object AuthService {
                 UserDataService.avatarName = response.getString("avatarName")
                 UserDataService.avatarColor = response.getString("avatarColor")
                 UserDataService.id = response.getString("_id")
+                IdlingResourceHelper.countingIdlingResource.decrement()
                 complete(true)
             } catch (e: JSONException) {
                 Log.d("JSON", "EXC:" + e.localizedMessage)
+                IdlingResourceHelper.countingIdlingResource.decrement()
                 complete(false)
             }
         }, Response.ErrorListener { error ->
             // this is where we handle with our error
             Log.d("ERROR", "Could not add user: $error")
+            IdlingResourceHelper.countingIdlingResource.decrement()
             complete(false)
         }) {
             override fun getBodyContentType(): String {
@@ -131,6 +143,7 @@ object AuthService {
 
     fun findUserByEmail(context: Context, complete: (Boolean) -> Unit) {
         val findUserRequest = object : JsonObjectRequest(Method.GET, "$URL_GET_USER${App.prefs.userEmail}", null, Response.Listener { response ->
+            IdlingResourceHelper.countingIdlingResource.increment()
 
             try {
                 UserDataService.name = response.getString("name")
@@ -141,12 +154,14 @@ object AuthService {
 
                 val userDataChange = Intent(BROADCAST_USER_DATA_CHANGE)
                 LocalBroadcastManager.getInstance(context).sendBroadcast(userDataChange)
+                IdlingResourceHelper.countingIdlingResource.decrement()
                 complete(true)
             } catch (e: JSONException) {
                 Log.d("JSON", "EXC: " + e.localizedMessage)
             }
         }, Response.ErrorListener { error ->
             Log.d("ERROR", "Could not find user.")
+            IdlingResourceHelper.countingIdlingResource.decrement()
             complete(false)
         }) {
 
