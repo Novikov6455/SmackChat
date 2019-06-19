@@ -15,13 +15,13 @@ class Lev03SignUpScreen {
     val createUserNameTxtBtn = Espresso.onView(
         Matchers.allOf(
             ViewMatchers.withId(R.id.createUserNameTxt),
-            childAtPosition(
-                childAtPosition(
-                    ViewMatchers.withId(android.R.id.content),
-                    0
-                ),
-                0
-            ),
+//            childAtPosition(
+//                childAtPosition(
+//                    ViewMatchers.withId(android.R.id.content),
+//                    0
+//                ),
+//                0
+//            ),
             ViewMatchers.isDisplayed()
         )
     )
@@ -32,13 +32,13 @@ class Lev03SignUpScreen {
     val createUserEmailTxtBtn = Espresso.onView(
         Matchers.allOf(
             ViewMatchers.withId(R.id.createEmailTxt),
-            childAtPosition(
-                childAtPosition(
-                    ViewMatchers.withId(android.R.id.content),
-                    0
-                ),
-                1
-            ),
+//            childAtPosition(
+//                childAtPosition(
+//                    ViewMatchers.withId(android.R.id.content),
+//                    0
+//                ),
+//                1
+//            ),
             ViewMatchers.isDisplayed()
         )
     )
@@ -49,13 +49,13 @@ class Lev03SignUpScreen {
     val createUserPasswordTxtBtn = Espresso.onView(
         Matchers.allOf(
             ViewMatchers.withId(R.id.createPasswordTxt),
-            childAtPosition(
-                childAtPosition(
-                    ViewMatchers.withId(android.R.id.content),
-                    0
-                ),
-                2
-            ),
+//            childAtPosition(
+//                childAtPosition(
+//                    ViewMatchers.withId(android.R.id.content),
+//                    0
+//                ),
+//                2
+//            ),
             ViewMatchers.isDisplayed()
         )
     )
@@ -67,14 +67,15 @@ class Lev03SignUpScreen {
 
     val avatarImageViewBtn = Espresso.onView(
         Matchers.allOf(
-            ViewMatchers.withId(R.id.createAvatarImageView), ViewMatchers.withContentDescription("AvatarImageView"),
-            childAtPosition(
-                childAtPosition(
-                    ViewMatchers.withId(android.R.id.content),
-                    0
-                ),
-                4
-            ),
+            ViewMatchers.withId(R.id.createAvatarImageView),
+            ViewMatchers.withContentDescription("AvatarImageView"),
+//            childAtPosition(
+//                childAtPosition(
+//                    ViewMatchers.withId(android.R.id.content),
+//                    0
+//                ),
+//                4
+//            ),
             ViewMatchers.isDisplayed()
         )
     )
@@ -84,14 +85,15 @@ class Lev03SignUpScreen {
 
     val backgroundColorBtn = Espresso.onView(
         Matchers.allOf(
-            ViewMatchers.withId(R.id.backgroundColorBtn), ViewMatchers.withText("generate background color"),
-            childAtPosition(
-                childAtPosition(
-                    ViewMatchers.withId(android.R.id.content),
-                    0
-                ),
-                5
-            ),
+            ViewMatchers.withId(R.id.backgroundColorBtn),
+            ViewMatchers.withText("generate background color"),
+//            childAtPosition(
+//                childAtPosition(
+//                    ViewMatchers.withId(android.R.id.content),
+//                    0
+//                ),
+//                5
+//            ),
             ViewMatchers.isDisplayed()
         )
     )
@@ -101,14 +103,15 @@ class Lev03SignUpScreen {
 
     val createUserBtn = Espresso.onView(
         Matchers.allOf(
-            ViewMatchers.withId(R.id.createUserBtn), ViewMatchers.withText("create user"),
-            childAtPosition(
-                childAtPosition(
-                    ViewMatchers.withId(android.R.id.content),
-                    0
-                ),
-                6
-            ),
+            ViewMatchers.withId(R.id.createUserBtn),
+            ViewMatchers.withText("create user"),
+//            childAtPosition(
+//                childAtPosition(
+//                    ViewMatchers.withId(android.R.id.content),
+//                    0
+//                ),
+//                6
+//            ),
             ViewMatchers.isDisplayed()
         )
     )

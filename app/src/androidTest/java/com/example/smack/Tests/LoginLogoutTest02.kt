@@ -6,6 +6,7 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.example.smack.Controller.MainActivity
 import com.example.smack.Screens.Lev00AppToolbarScreen
+import com.example.smack.Screens.Lev02LoginScreen
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -22,9 +23,7 @@ class LoginLogoutTest02 : BaseTest() {
 
     @Test
     fun userLogInOutHappyPath() {
-        val lev00AppToolbarScreen = Lev00AppToolbarScreen()
-        val lev01NavHeaderScreen = lev00AppToolbarScreen.tapToolbarBtn()
-        val lev02LoginScreen = lev01NavHeaderScreen.tapLogInBtn()
+        val lev02LoginScreen:Lev02LoginScreen = startAppAndGoToLoginScreen()
 
         lev02LoginScreen.enterLoginEmail(validEmail)
         lev02LoginScreen.enterLoginPassword(validPassword)
@@ -36,9 +35,7 @@ class LoginLogoutTest02 : BaseTest() {
 
     @Test
     fun invalidLogIn() {
-        val lev00AppToolbarScreen = Lev00AppToolbarScreen()
-        val lev01NavHeaderScreen = lev00AppToolbarScreen.tapToolbarBtn()
-        val lev02LoginScreen = lev01NavHeaderScreen.tapLogInBtn()
+        val lev02LoginScreen:Lev02LoginScreen = startAppAndGoToLoginScreen()
 
         lev02LoginScreen.enterLoginEmail(invalidEmail)
         lev02LoginScreen.enterLoginPassword(validPassword)
@@ -50,10 +47,21 @@ class LoginLogoutTest02 : BaseTest() {
     }
 
     @Test
+    fun invalidPassword() {
+        val lev02LoginScreen:Lev02LoginScreen = startAppAndGoToLoginScreen()
+
+        lev02LoginScreen.enterLoginEmail(validEmail)
+        lev02LoginScreen.enterLoginPassword(invalidPassword)
+
+        lev02LoginScreen.tapLoginSubmitBtn()
+        assert(lev02LoginScreen.loginResult())
+        // teardown
+        pressBack()
+    }
+
+    @Test
     fun emptyEmail() {
-        val lev00AppToolbarScreen = Lev00AppToolbarScreen()
-        val lev01NavHeaderScreen = lev00AppToolbarScreen.tapToolbarBtn()
-        val lev02LoginScreen = lev01NavHeaderScreen.tapLogInBtn()
+        val lev02LoginScreen:Lev02LoginScreen = startAppAndGoToLoginScreen()
 
         lev02LoginScreen.enterLoginEmail("")
         lev02LoginScreen.enterLoginPassword(validPassword)
@@ -66,9 +74,7 @@ class LoginLogoutTest02 : BaseTest() {
 
     @Test
     fun emptyPasswordl() {
-        val lev00AppToolbarScreen = Lev00AppToolbarScreen()
-        val lev01NavHeaderScreen = lev00AppToolbarScreen.tapToolbarBtn()
-        val lev02LoginScreen = lev01NavHeaderScreen.tapLogInBtn()
+        val lev02LoginScreen:Lev02LoginScreen = startAppAndGoToLoginScreen()
 
         lev02LoginScreen.enterLoginEmail(validEmail)
         lev02LoginScreen.enterLoginPassword("")
@@ -81,10 +87,7 @@ class LoginLogoutTest02 : BaseTest() {
 
     @Test
     fun emptyEmailEmptyPassword() {
-        val lev00AppToolbarScreen = Lev00AppToolbarScreen()
-        val lev01NavHeaderScreen = lev00AppToolbarScreen.tapToolbarBtn()
-        val lev02LoginScreen = lev01NavHeaderScreen.tapLogInBtn()
-
+        val lev02LoginScreen:Lev02LoginScreen = startAppAndGoToLoginScreen()
 
         lev02LoginScreen.enterLoginEmail("")
         lev02LoginScreen.enterLoginPassword("")

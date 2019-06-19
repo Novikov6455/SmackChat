@@ -20,13 +20,13 @@ class Lev04AddChannelScreen {
     private val addChannelNameTxt = Espresso.onView(
         Matchers.allOf(
             ViewMatchers.withId(R.id.addChannelNameTxt),
-            childAtPosition(
-                childAtPosition(
-                    ViewMatchers.withId(R.id.custom),
-                    0
-                ),
-                1
-            ),
+//            childAtPosition(
+//                childAtPosition(
+//                    ViewMatchers.withId(R.id.custom),
+//                    0
+//                ),
+//                1
+//            ),
             ViewMatchers.isDisplayed()
         )
     )
@@ -37,13 +37,13 @@ class Lev04AddChannelScreen {
     private val addChannelDescTxt = Espresso.onView(
         Matchers.allOf(
             ViewMatchers.withId(R.id.addChannelDescTxt),
-            childAtPosition(
-                childAtPosition(
-                    ViewMatchers.withId(R.id.custom),
-                    0
-                ),
-                2
-            ),
+//            childAtPosition(
+//                childAtPosition(
+//                    ViewMatchers.withId(R.id.custom),
+//                    0
+//                ),
+//                2
+//            ),
             ViewMatchers.isDisplayed()
         )
     )
@@ -53,14 +53,15 @@ class Lev04AddChannelScreen {
 
     private val submitAddChannelBtn = Espresso.onView(
         Matchers.allOf(
-            ViewMatchers.withId(android.R.id.button1), ViewMatchers.withText("Add"),
-            childAtPosition(
-                childAtPosition(
-                    ViewMatchers.withId(R.id.buttonPanel),
-                    0
-                ),
-                3
-            )
+            ViewMatchers.withId(android.R.id.button1),
+            ViewMatchers.withText("Add")
+//            childAtPosition(
+//                childAtPosition(
+//                    ViewMatchers.withId(R.id.buttonPanel),
+//                    0
+//                ),
+//                3
+//            )
         )
     )
     fun addChannelSubmit(): Lev03MainActivityScreen {

@@ -62,21 +62,12 @@ class Lev02LoginScreen {
 
     private val loginScreenSignUpHereBtn = Espresso.onView(
         Matchers.allOf(
-            ViewMatchers.withId(R.id.loginCreateUserBtn), ViewMatchers.withText("Sign Up Here"),
-//            childAtPosition(
-//                childAtPosition(
-//                    ViewMatchers.withId(android.R.id.content),
-//                    0
-//                ),
-//                4
-//            ),
-            ViewMatchers.isDisplayed()
+            withId(R.id.loginCreateUserBtn), withText("Sign Up Here"),
+            isDisplayed()
         )
     )
     fun tapSignUpHereBtn() : Lev03SignUpScreen {
         loginScreenSignUpHereBtn.perform(click())
         return Lev03SignUpScreen()
     }
-
-
 }
