@@ -89,7 +89,7 @@ class Lev03MainActivityScreen  {
 
     fun tapChannel(channelName: String): Lev04ChannelContentScreen  {
 //        println(channelRow)
-        channelRow("#$channelName").perform(click())
+        channelRow(channelName).perform(click())
 
         return Lev04ChannelContentScreen()
     }
@@ -117,7 +117,6 @@ class Lev03MainActivityScreen  {
         )
     )
 
-    // logout ****************************
     fun submitLogOut(){
         navHeaderLogoutBtn.perform(click())
     }

@@ -33,13 +33,13 @@ class AddChannelTest02 : BaseTest() {
         lev04AddChannelScreen.enterChannelName(validCreatedChannelName)
         lev04AddChannelScreen.enterChannelDescription(validCreatedChannelDescription)
         lev04AddChannelScreen.addChannelSubmit()
-        swipeUp()
+//        swipeUp()
 //        lev03MainActivityScreen.channelNameIsInListOfChannels(validCreatedChannelName)
         lev03MainActivityScreen.validChannelNameCellIsDisplayed(validCreatedChannelName)
 
 
-//       in the next line is problem  ******************************************************************
-//        lev03MainActivityScreen.tapChannel(validCreatedChannelName)
+//       in the next line is problem  ****  v   v   v   **********************************
+//        lev03MainActivityScreen.tapChannel(validChannelName03)
 
 
 //        val lev04ChannelContentScreen = lev03MainActivityScreen.tapChannel("#$validCreatedChannelName")

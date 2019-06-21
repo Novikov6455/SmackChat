@@ -1,4 +1,4 @@
-package com.example.smack
+package com.example.smack.Controller
 
 
 import android.support.test.espresso.Espresso.onView
@@ -8,7 +8,7 @@ import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.filters.LargeTest
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
-import com.example.smack.Controller.MainActivity
+import com.example.smack.R
 import org.hamcrest.Matchers.allOf
 import org.junit.Rule
 import org.junit.Test

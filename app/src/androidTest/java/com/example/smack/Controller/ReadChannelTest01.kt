@@ -1,4 +1,4 @@
-package com.example.smack
+package com.example.smack.Controller
 
 import android.os.SystemClock.sleep
 import android.support.test.espresso.Espresso
@@ -11,7 +11,7 @@ import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
 import android.view.View
 import android.view.ViewGroup
-import com.example.smack.Controller.MainActivity
+import com.example.smack.R
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers
