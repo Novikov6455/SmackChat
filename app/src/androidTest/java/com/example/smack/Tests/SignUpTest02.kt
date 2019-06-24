@@ -1,23 +1,14 @@
 package com.example.smack.Tests
 
 import android.support.test.filters.LargeTest
-import android.support.test.rule.ActivityTestRule
-import android.support.test.runner.AndroidJUnit4
-import com.example.smack.Controller.MainActivity
-import com.example.smack.Screens.Lev00AppToolbarScreen
 import com.example.smack.Screens.Lev02LoginScreen
-import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 import java.text.SimpleDateFormat
 import java.util.*
 
 @LargeTest
-@RunWith(AndroidJUnit4::class)
+// @RunWith(AndroidJUnit4::class)
 class SignUpTest02 : BaseTest() {
-    @Rule
-    @JvmField
-    var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
     @Test
     fun userSignUp() {
@@ -40,8 +31,7 @@ class SignUpTest02 : BaseTest() {
         lev03SignUpScreen.generateBackgroundColor()
 //        lev03SignUpScreen.generateBackgroundColor()
 
-        val lev03MainActivityScreen = lev03SignUpScreen.createUser() // relocate to lev03MainActivityScreen
-        println(validCreatedUserName)
+        val lev03MainActivityScreen = lev03SignUpScreen.createUser()
 
         lev03MainActivityScreen.validUserNameIsDisplayed(validCreatedUserName)
         lev03MainActivityScreen.submitLogOut()

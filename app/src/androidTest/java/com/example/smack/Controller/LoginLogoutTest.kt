@@ -1,5 +1,4 @@
-package com.example.smack
-
+package com.example.smack.Controller
 
 import android.os.SystemClock.sleep
 import android.support.test.espresso.Espresso.onView
@@ -11,7 +10,7 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import android.view.View
 import android.view.ViewGroup
-import com.example.smack.Controller.MainActivity
+import com.example.smack.R
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.`is`
@@ -102,7 +101,6 @@ class LoginLogoutTest {
 //        pressBack()
         Thread.sleep(2000)
 
-
         val appCompatButton2 = onView(
             allOf(
                 withId(R.id.loginLoginBtn), withText("login"),
@@ -118,7 +116,6 @@ class LoginLogoutTest {
         )
         sleep(1000)
         appCompatButton2.perform(click())
-
 
         val textView = onView(
             allOf(
@@ -158,7 +155,6 @@ class LoginLogoutTest {
         )
         appCompatButton3.perform(click())
         Thread.sleep(1000)
-
 
         val button = onView(
             allOf(

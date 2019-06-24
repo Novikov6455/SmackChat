@@ -99,8 +99,6 @@ object AuthService {
         jsonBody.put("avatarColor", avatarColor)
         val requestBody = jsonBody.toString()
         IdlingResourceHelper.countingIdlingResource.increment()
-
-
         val createRequest = object : JsonObjectRequest(Method.POST, URL_CREATE_USER, null, Response.Listener { response ->
             // this is where we  parse our json object
             println(response)

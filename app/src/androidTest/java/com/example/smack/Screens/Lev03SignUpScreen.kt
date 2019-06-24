@@ -3,25 +3,13 @@ package com.example.smack.Screens
 import android.support.test.espresso.Espresso
 import android.support.test.espresso.action.ViewActions.*
 import android.support.test.espresso.matcher.ViewMatchers
-import android.view.View
-import android.view.ViewGroup
 import com.example.smack.R
-import org.hamcrest.Description
-import org.hamcrest.Matcher
 import org.hamcrest.Matchers
-import org.hamcrest.TypeSafeMatcher
 
 class Lev03SignUpScreen {
     val createUserNameTxtBtn = Espresso.onView(
         Matchers.allOf(
             ViewMatchers.withId(R.id.createUserNameTxt),
-//            childAtPosition(
-//                childAtPosition(
-//                    ViewMatchers.withId(android.R.id.content),
-//                    0
-//                ),
-//                0
-//            ),
             ViewMatchers.isDisplayed()
         )
     )
@@ -32,13 +20,6 @@ class Lev03SignUpScreen {
     val createUserEmailTxtBtn = Espresso.onView(
         Matchers.allOf(
             ViewMatchers.withId(R.id.createEmailTxt),
-//            childAtPosition(
-//                childAtPosition(
-//                    ViewMatchers.withId(android.R.id.content),
-//                    0
-//                ),
-//                1
-//            ),
             ViewMatchers.isDisplayed()
         )
     )
@@ -49,13 +30,6 @@ class Lev03SignUpScreen {
     val createUserPasswordTxtBtn = Espresso.onView(
         Matchers.allOf(
             ViewMatchers.withId(R.id.createPasswordTxt),
-//            childAtPosition(
-//                childAtPosition(
-//                    ViewMatchers.withId(android.R.id.content),
-//                    0
-//                ),
-//                2
-//            ),
             ViewMatchers.isDisplayed()
         )
     )
@@ -63,19 +37,10 @@ class Lev03SignUpScreen {
         createUserPasswordTxtBtn.perform(replaceText(validCreatedUserPassword), closeSoftKeyboard())
     }
 
-//    pressBack()
-
     val avatarImageViewBtn = Espresso.onView(
         Matchers.allOf(
             ViewMatchers.withId(R.id.createAvatarImageView),
             ViewMatchers.withContentDescription("AvatarImageView"),
-//            childAtPosition(
-//                childAtPosition(
-//                    ViewMatchers.withId(android.R.id.content),
-//                    0
-//                ),
-//                4
-//            ),
             ViewMatchers.isDisplayed()
         )
     )
@@ -87,13 +52,6 @@ class Lev03SignUpScreen {
         Matchers.allOf(
             ViewMatchers.withId(R.id.backgroundColorBtn),
             ViewMatchers.withText("generate background color"),
-//            childAtPosition(
-//                childAtPosition(
-//                    ViewMatchers.withId(android.R.id.content),
-//                    0
-//                ),
-//                5
-//            ),
             ViewMatchers.isDisplayed()
         )
     )
@@ -105,13 +63,6 @@ class Lev03SignUpScreen {
         Matchers.allOf(
             ViewMatchers.withId(R.id.createUserBtn),
             ViewMatchers.withText("create user"),
-//            childAtPosition(
-//                childAtPosition(
-//                    ViewMatchers.withId(android.R.id.content),
-//                    0
-//                ),
-//                6
-//            ),
             ViewMatchers.isDisplayed()
         )
     )
@@ -119,26 +70,4 @@ class Lev03SignUpScreen {
         createUserBtn.perform(click())
         return Lev03MainActivityScreen()
     }
-
-
-
-
-    private fun childAtPosition(
-        parentMatcher: Matcher<View>, position: Int
-    ): Matcher<View> {
-
-        return object : TypeSafeMatcher<View>() {
-            override fun describeTo(description: Description) {
-                description.appendText("Child at position $position in parent ")
-                parentMatcher.describeTo(description)
-            }
-
-            public override fun matchesSafely(view: View): Boolean {
-                val parent = view.parent
-                return parent is ViewGroup && parentMatcher.matches(parent)
-                        && view == parent.getChildAt(position)
-            }
-        }
-    }
-
 }
