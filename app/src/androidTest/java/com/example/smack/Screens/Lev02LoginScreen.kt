@@ -4,8 +4,6 @@ import android.support.test.espresso.Espresso
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.ViewInteraction
 import android.support.test.espresso.action.ViewActions.*
-import android.support.test.espresso.assertion.ViewAssertions.matches
-import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.espresso.matcher.ViewMatchers.*
 import com.example.smack.Controller.App
 import com.example.smack.R
@@ -20,10 +18,8 @@ class Lev02LoginScreen {
             isDisplayed()
         )
     )
-    init {
-        loginEmailTxt.check(matches(isDisplayed()))
-    }
-    fun enterLoginEmail(emailTxt: String){
+
+    fun enterLoginEmail(emailTxt: String) {
         loginEmailTxt.perform(replaceText(emailTxt), closeSoftKeyboard())
     }
 
@@ -33,9 +29,7 @@ class Lev02LoginScreen {
             isDisplayed()
         )
     )
-    init {
-        loginPasswordTxt.check(matches(isDisplayed()))
-    }
+
     fun enterLoginPassword(passwordTxt: String): Lev02LoginScreen {
         loginPasswordTxt.perform(replaceText(passwordTxt), closeSoftKeyboard())
         return this
@@ -48,9 +42,7 @@ class Lev02LoginScreen {
             isDisplayed()
         )
     )
-    init {
-        loginScreenLoginBtn.check(matches(isDisplayed()))
-    }
+
     fun tapLoginSubmitBtn(): Lev03MainActivityScreen {
         loginScreenLoginBtn.perform(click())
         return Lev03MainActivityScreen()
@@ -66,7 +58,7 @@ class Lev02LoginScreen {
             isDisplayed()
         )
     )
-    fun tapSignUpHereBtn() : Lev03SignUpScreen {
+    fun tapSignUpHereBtn(): Lev03SignUpScreen {
         loginScreenSignUpHereBtn.perform(click())
         return Lev03SignUpScreen()
     }

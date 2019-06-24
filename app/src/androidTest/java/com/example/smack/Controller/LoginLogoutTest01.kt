@@ -1,6 +1,5 @@
 package com.example.smack.Controller
 
-
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.*
 import android.support.test.espresso.assertion.ViewAssertions.matches

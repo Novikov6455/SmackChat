@@ -9,11 +9,10 @@ import android.support.test.espresso.assertion.ViewAssertions
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.espresso.matcher.ViewMatchers.withText
-import android.view.View
-import android.view.ViewGroup
 import com.example.smack.R
-import org.hamcrest.*
+import org.hamcrest.CoreMatchers
 import org.hamcrest.CoreMatchers.allOf
+import org.hamcrest.Matchers
 
 class Lev04ChannelContentScreen {
     private val toolbarBtn: ViewInteraction = Espresso.onView(
@@ -41,20 +40,13 @@ class Lev04ChannelContentScreen {
         )
     )
     fun checkValidChannelIsPresent(ChannelName: String) {
-        mainChannelName.check(ViewAssertions.matches(ViewMatchers.withText(ChannelName)))
+        mainChannelName.check(ViewAssertions.matches(ViewMatchers.withText("#$ChannelName")))
     }
 
     // messageTextField
     val messageTextField = Espresso.onView(
         Matchers.allOf(
             ViewMatchers.withId(R.id.messageTextField),
-            childAtPosition(
-                childAtPosition(
-                    ViewMatchers.withClassName(Matchers.`is`("android.support.design.widget.CoordinatorLayout")),
-                    1
-                ),
-                1
-            ),
             ViewMatchers.isDisplayed()
         )
     )
@@ -65,13 +57,6 @@ class Lev04ChannelContentScreen {
     val sendMessageBtn = Espresso.onView(
         Matchers.allOf(
             ViewMatchers.withId(R.id.sendMessageBtn), ViewMatchers.withContentDescription("TODO"),
-            childAtPosition(
-                childAtPosition(
-                    ViewMatchers.withClassName(Matchers.`is`("android.support.design.widget.CoordinatorLayout")),
-                    1
-                ),
-                2
-            ),
             ViewMatchers.isDisplayed()
         )
     )
@@ -90,28 +75,4 @@ class Lev04ChannelContentScreen {
             .check(matches(ViewMatchers.isDisplayed()))
         return this
     }
-
-    // service function
-    private fun childAtPosition(
-        parentMatcher: Matcher<View>, position: Int
-    ): Matcher<View> {
-
-        return object : TypeSafeMatcher<View>() {
-            override fun describeTo(description: Description) {
-                description.appendText("Child at position $position in parent ")
-                parentMatcher.describeTo(description)
-            }
-
-            public override fun matchesSafely(view: View): Boolean {
-                val parent = view.parent
-                return parent is ViewGroup && parentMatcher.matches(parent)
-                        && view == parent.getChildAt(position)
-            }
-        }
-    }
-
-
-
-
-
 }

@@ -19,7 +19,6 @@ import org.hamcrest.TypeSafeMatcher
 import org.junit.Rule
 import org.junit.Test
 
-
 class ReadChannelTest01 {
     @Rule
     @JvmField
@@ -73,7 +72,7 @@ class ReadChannelTest01 {
             )
         )
         loginScreenLoginBtn.perform(click())
-        sleep(1000)
+        sleep(4000)
 
         // tap first channel in list of channels
         val listOfChannels = Espresso.onData(Matchers.anything())
@@ -120,8 +119,7 @@ class ReadChannelTest01 {
     }
 
     private fun childAtPosition(
-        parentMatcher: Matcher<View>, position: Int
-    ): Matcher<View> {
+        parentMatcher: Matcher<View>, position: Int): Matcher<View> {
 
         return object : TypeSafeMatcher<View>() {
             override fun describeTo(description: Description) {

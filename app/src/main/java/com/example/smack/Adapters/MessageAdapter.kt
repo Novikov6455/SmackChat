@@ -31,8 +31,7 @@ class MessageAdapter(val context: Context, val messages: ArrayList<Message>) : R
         val view = LayoutInflater.from(context).inflate(R.layout.message_list_view, parent, false)
         return ViewHolder(view)
     }
-
-     class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
+    class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
         val userImage = itemView?.findViewById<ImageView>(R.id.messageUserImage)
         val timeStamp = itemView?.findViewById<TextView>(R.id.timestampLbl)
         val userName = itemView?.findViewById<TextView>(R.id.messageUserNameLbl)

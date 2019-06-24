@@ -7,8 +7,7 @@ import org.hamcrest.Description
 import org.hamcrest.Matchers
 import org.hamcrest.TypeSafeMatcher
 
-class RecyclerViewItemMatcher private constructor(private val channelName: String)
-    : TypeSafeMatcher<View>() {
+class RecyclerViewItemMatcher private constructor(private val channelName: String) : TypeSafeMatcher<View>() {
     override fun describeTo(description: Description?) {
         description?.appendText("The item text for the RecyclerView equals : $channelName")
     }
