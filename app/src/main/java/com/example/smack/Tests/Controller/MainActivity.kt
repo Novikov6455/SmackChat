@@ -1,4 +1,4 @@
-package com.example.smack.Controller
+package com.example.smack.Tests.Controller
 
 import android.content.BroadcastReceiver
 import android.content.Context

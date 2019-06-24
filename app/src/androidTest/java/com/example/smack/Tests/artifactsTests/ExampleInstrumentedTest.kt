@@ -1,4 +1,4 @@
-package com.example.smack.Controller
+package com.example.smack.Tests.artifactsTests
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

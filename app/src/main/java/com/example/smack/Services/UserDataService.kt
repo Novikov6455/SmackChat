@@ -1,7 +1,7 @@
 package com.example.smack.Services
 
 import android.graphics.Color
-import com.example.smack.Controller.App
+import com.example.smack.Tests.Controller.App
 import java.util.Scanner
 
 object UserDataService {

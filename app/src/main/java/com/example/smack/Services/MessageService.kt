@@ -3,7 +3,7 @@ package com.example.smack.Services
 import android.util.Log
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
-import com.example.smack.Controller.App
+import com.example.smack.Tests.Controller.App
 import com.example.smack.Model.Channel
 import com.example.smack.Model.Message
 import com.example.smack.Utilities.URL_GET_CHANNELS

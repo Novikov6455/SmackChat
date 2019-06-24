@@ -12,7 +12,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.shazam.fork:fork-gradle-plugin:3.7.0-SNAPSHOT'
+        classpath 'com.shazam.fork:fork-gradle-plugin:3.8.0-SNAPSHOT'
     }
 }
 
@@ -23,7 +23,7 @@ android {
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.example.smack"
-        minSdkVersion 21
+        minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"

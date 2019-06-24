@@ -7,7 +7,7 @@ import android.util.Log
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
-import com.example.smack.Controller.App
+import com.example.smack.Tests.Controller.App
 import com.example.smack.Utilities.URL_CREATE_USER
 import com.example.smack.Utilities.URL_GET_USER
 import com.example.smack.Utilities.URL_LOGIN

@@ -1,4 +1,4 @@
-package com.example.smack.Controller
+package com.example.smack.Tests.Controller
 
 import android.content.Intent
 import android.graphics.Color

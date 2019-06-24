@@ -27,7 +27,7 @@ class AddChannelTest02 : BaseTest() {
         lev03MainActivityScreen.channelsListIsVisible()
         lev03MainActivityScreen.openChannelByName(validCreatedChannelName)
         val lev04ChannelContent = Lev04ChannelContentScreen()
-        lev04ChannelContent.checkValidChannelIsPresent("#$validCreatedChannelName")
+        lev04ChannelContent.checkValidChannelIsPresent(validCreatedChannelName)
 
     //      teardown
         lev04ChannelContent.tapToolbarBtn().submitLogOut()

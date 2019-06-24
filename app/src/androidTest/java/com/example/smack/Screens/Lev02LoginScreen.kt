@@ -5,7 +5,7 @@ import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.ViewInteraction
 import android.support.test.espresso.action.ViewActions.*
 import android.support.test.espresso.matcher.ViewMatchers.*
-import com.example.smack.Controller.App
+import com.example.smack.Tests.Controller.App
 import com.example.smack.R
 import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.Matchers

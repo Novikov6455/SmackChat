@@ -2,7 +2,7 @@ package com.example.smack.Tests
 
 import android.support.test.espresso.IdlingRegistry
 import android.support.test.rule.ActivityTestRule
-import com.example.smack.Controller.MainActivity
+import com.example.smack.Tests.Controller.MainActivity
 import com.example.smack.Screens.Lev00AppToolbarScreen
 import com.example.smack.Screens.Lev02LoginScreen
 import com.example.smack.Screens.Lev03MainActivityScreen
