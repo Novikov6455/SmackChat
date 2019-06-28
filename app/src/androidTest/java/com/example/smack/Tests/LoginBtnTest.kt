@@ -1,4 +1,4 @@
-package com.example.smack.Tests.artifactsTests
+package com.example.smack.Tests
 
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click

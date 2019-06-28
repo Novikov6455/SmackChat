@@ -1,4 +1,4 @@
-package com.example.smack.Tests.artifactsTests
+package com.example.smack.Tests
 
 import android.os.SystemClock.sleep
 import android.support.test.espresso.Espresso

@@ -12,6 +12,7 @@ import com.example.smack.Utilities.CustomFailureHandler
 import org.hamcrest.CoreMatchers.startsWith
 import org.hamcrest.Matchers
 import org.hamcrest.Matchers.hasToString
+import java.lang.Thread.sleep
 
 class Lev03MainActivityScreen  {
 
@@ -38,6 +39,7 @@ class Lev03MainActivityScreen  {
     }
 
     fun openChannelByName(channelName: String): Lev04ChannelContentScreen {
+//        sleep(1000)
         onData(hasToString(startsWith("#$channelName")))
             .inAdapterView(withId(R.id.channel_list))
             .perform(click())

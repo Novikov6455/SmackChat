@@ -26,14 +26,14 @@ class SignUpTest02 : BaseTest() {
         lev03SignUpScreen.enterUserPassword(validCreatedUserPassword)
         lev03SignUpScreen.tapAvatarImageViewBtn()
         lev03SignUpScreen.tapAvatarImageViewBtn()
-//        lev03SignUpScreen.tapAvatarImageViewBtn()
+        lev03SignUpScreen.tapAvatarImageViewBtn()
         lev03SignUpScreen.generateBackgroundColor()
         lev03SignUpScreen.generateBackgroundColor()
-//        lev03SignUpScreen.generateBackgroundColor()
+        lev03SignUpScreen.generateBackgroundColor()
 
         val lev03MainActivityScreen = lev03SignUpScreen.createUser()
-
         lev03MainActivityScreen.validUserNameIsDisplayed(validCreatedUserName)
+
         lev03MainActivityScreen.submitLogOut()
     }
 
