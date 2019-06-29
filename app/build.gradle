@@ -67,7 +67,7 @@ kapt {
 
 fork {
     title = "My acceptance tests"
-    testPackage = "com.example.smack"
+    testPackage = "com.example.smack.Tests"
     fallbackToScreenshots = true
     poolingStrategy {
         computed {
@@ -78,3 +78,4 @@ fork {
         }
     }
 }
+
