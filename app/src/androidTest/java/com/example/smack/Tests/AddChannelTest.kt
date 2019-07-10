@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 // @RunWith(AndroidJUnit4::class)
-class AddChannelTest02 : BaseTest() {
+class AddChannelTest : BaseTest() {
 
     private val toCreateChannelName = " Test channel"
     var validCreatedChannelName = (dateString() + toCreateChannelName)

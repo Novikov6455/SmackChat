@@ -27,8 +27,8 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        testInstrumentationRunner "com.example.smack.Utilities.RxIdlerTestRunner"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner "com.example.smack.Utilities.RxIdlerTestRunner"
 //        vectorDrawables.useSupportLibrary = true // This line here added for vector ability
     }
     buildTypes {
@@ -59,11 +59,20 @@ dependencies {
         exclude group: 'org.json', module: 'json'
     }
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    compile 'com.android.support:support-annotations:28.0.0'
 }
 
 kapt {
     generateStubs = true
 }
+
+//test {
+//    useJUnit()
+//    filter {
+//        includeTestsMatching "*Test*"
+//    }
+//
+//}
 
 fork {
     title = "My acceptance tests"

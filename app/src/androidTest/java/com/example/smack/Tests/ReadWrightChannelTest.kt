@@ -7,7 +7,7 @@ import java.util.*
 
 @LargeTest
 // @RunWith(AndroidJUnit4::class)
-class ReadWrightChannelTest02 : BaseTest() {
+class ReadWrightChannelTest : BaseTest() {
 
     val testMessage = "I test this channel at " + dateString()
 

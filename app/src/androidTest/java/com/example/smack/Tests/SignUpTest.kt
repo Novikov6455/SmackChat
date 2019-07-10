@@ -8,7 +8,7 @@ import java.util.*
 
 @LargeTest
 // @RunWith(AndroidJUnit4::class)
-class SignUpTest02 : BaseTest() {
+class SignUpTest : BaseTest() {
 
     @Test
     fun userSignUp() {
@@ -26,7 +26,7 @@ class SignUpTest02 : BaseTest() {
         lev03SignUpScreen.enterUserPassword(validCreatedUserPassword)
         lev03SignUpScreen.tapAvatarImageViewBtn()
         lev03SignUpScreen.tapAvatarImageViewBtn()
-        lev03SignUpScreen.tapAvatarImageViewBtn()
+//        lev03SignUpScreen.tapAvatarImageViewBtn()
         lev03SignUpScreen.generateBackgroundColor()
         lev03SignUpScreen.generateBackgroundColor()
         lev03SignUpScreen.generateBackgroundColor()
