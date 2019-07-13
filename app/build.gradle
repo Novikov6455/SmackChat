@@ -59,8 +59,9 @@ dependencies {
         exclude group: 'org.json', module: 'json'
     }
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
-    compile 'com.android.support:support-annotations:28.0.0'
-    compile 'androidx.annotation:annotation:1.1.0'
+    implementation 'com.android.support:support-annotations:28.0.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    compile 'com.android.support:support-v4:28.0.0'
 }
 
 kapt {
@@ -78,7 +79,7 @@ kapt {
 fork {
     title = "My acceptance tests"
     testPackage = "com.example.smack"
-    testClassRegex = "^((?!Abstract).)*Test*\$"
+    testClassRegex = /^((?!Abstract).)*Test*$/
     fallbackToScreenshots = true
     poolingStrategy {
         computed {
