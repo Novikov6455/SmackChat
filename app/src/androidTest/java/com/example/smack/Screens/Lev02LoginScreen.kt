@@ -48,7 +48,7 @@ class Lev02LoginScreen {
         return Lev03MainActivityScreen()
     }
 
-    fun loginResult(result: Boolean = App.prefs.isLoggedIn): Boolean {
+    fun checkIsNotLoggedIn(result: Boolean = App.prefs.isLoggedIn): Boolean {
         return !result
     }
 

@@ -8,7 +8,7 @@ import java.util.*
 
 @LargeTest
 // @RunWith(AndroidJUnit4::class)
-class SignUpTest : BaseTest() {
+class SignUpTest01 : BaseTest() {
 
     @Test
     fun userSignUp() {

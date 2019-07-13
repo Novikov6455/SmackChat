@@ -29,7 +29,7 @@ class LoginLogoutTest : BaseTest() {
         lev02LoginScreen.enterLoginPassword(validPassword)
 
         lev02LoginScreen.tapLoginSubmitBtn()
-        assert(lev02LoginScreen.loginResult())
+        assert(lev02LoginScreen.checkIsNotLoggedIn())
         // teardown
         pressBack()
     }
@@ -42,7 +42,7 @@ class LoginLogoutTest : BaseTest() {
         lev02LoginScreen.enterLoginPassword(invalidPassword)
 
         lev02LoginScreen.tapLoginSubmitBtn()
-        assert(lev02LoginScreen.loginResult())
+        assert(lev02LoginScreen.checkIsNotLoggedIn())
         // teardown
         pressBack()
     }
@@ -55,7 +55,7 @@ class LoginLogoutTest : BaseTest() {
         lev02LoginScreen.enterLoginPassword(validPassword)
 
         lev02LoginScreen.tapLoginSubmitBtn()
-        assert(lev02LoginScreen.loginResult())
+        assert(lev02LoginScreen.checkIsNotLoggedIn())
         // teardown
         pressBack()
     }
@@ -68,7 +68,7 @@ class LoginLogoutTest : BaseTest() {
         lev02LoginScreen.enterLoginPassword("")
 
         lev02LoginScreen.tapLoginSubmitBtn()
-        assert(lev02LoginScreen.loginResult())
+        assert(lev02LoginScreen.checkIsNotLoggedIn())
         // teardown
         pressBack()
     }
@@ -81,7 +81,7 @@ class LoginLogoutTest : BaseTest() {
         lev02LoginScreen.enterLoginPassword("")
 
         lev02LoginScreen.tapLoginSubmitBtn()
-        assert(lev02LoginScreen.loginResult())
+        assert(lev02LoginScreen.checkIsNotLoggedIn())
         // teardown
         pressBack()
     }
