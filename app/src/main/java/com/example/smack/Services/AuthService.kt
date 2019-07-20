@@ -140,9 +140,8 @@ object AuthService {
     }
 
     fun findUserByEmail(context: Context, complete: (Boolean) -> Unit) {
+        IdlingResourceHelper.countingIdlingResource.increment()
         val findUserRequest = object : JsonObjectRequest(Method.GET, "$URL_GET_USER${App.prefs.userEmail}", null, Response.Listener { response ->
-            IdlingResourceHelper.countingIdlingResource.increment()
-
             try {
                 UserDataService.name = response.getString("name")
                 UserDataService.email = response.getString("email")
@@ -156,6 +155,8 @@ object AuthService {
                 complete(true)
             } catch (e: JSONException) {
                 Log.d("JSON", "EXC: " + e.localizedMessage)
+                IdlingResourceHelper.countingIdlingResource.decrement()
+                complete(false)
             }
         }, Response.ErrorListener { error ->
             Log.d("ERROR", "Could not find user.")

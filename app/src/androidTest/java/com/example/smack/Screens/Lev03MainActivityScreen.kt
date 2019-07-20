@@ -5,7 +5,9 @@ import android.support.test.espresso.Espresso.onData
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.ViewInteraction
 import android.support.test.espresso.action.ViewActions.click
+import android.support.test.espresso.assertion.ViewAssertions
 import android.support.test.espresso.assertion.ViewAssertions.matches
+import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.espresso.matcher.ViewMatchers.*
 import com.example.smack.R
 import com.example.smack.Utilities.CustomFailureHandler
@@ -32,6 +34,11 @@ class Lev03MainActivityScreen  {
     private  val channelsList: ViewInteraction
         get() = onView(withId(R.id.channel_list))
 
+//    init {
+//        channelsList.check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+//    }
+
+
     fun channelsListIsVisible() {
         channelsList
             .withFailureHandler(CustomFailureHandler())
@@ -39,7 +46,6 @@ class Lev03MainActivityScreen  {
     }
 
     fun openChannelByName(channelName: String): Lev04ChannelContentScreen {
-//        sleep(1000)
         onData(hasToString(startsWith("#$channelName")))
             .inAdapterView(withId(R.id.channel_list))
             .perform(click())

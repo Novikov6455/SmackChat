@@ -7,15 +7,27 @@ import com.example.smack.Screens.Lev00AppToolbarScreen
 import com.example.smack.Screens.Lev02LoginScreen
 import com.example.smack.Screens.Lev03MainActivityScreen
 import com.example.smack.Services.IdlingResourceHelper
+import com.schibsted.spain.barista.rule.cleardata.ClearDatabaseRule
+import com.schibsted.spain.barista.rule.cleardata.ClearFilesRule
+import com.schibsted.spain.barista.rule.cleardata.ClearPreferencesRule
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 
 open class BaseTest {
 
-    @Rule
-    @JvmField
+    @get:Rule
+//    @JvmField
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
+
+    @get:Rule
+    var clearPreferencesRule = ClearPreferencesRule()
+
+    @get:Rule
+    var clearDatabaseRule = ClearDatabaseRule()
+
+    @get:Rule
+    var clearFilesRule = ClearFilesRule()
 
     val validEmail = "o@o.com"
     val validPassword = "123456"

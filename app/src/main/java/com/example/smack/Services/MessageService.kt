@@ -16,9 +16,9 @@ object MessageService {
     val messages = ArrayList<Message>()
 
     fun getChannels(complete: (Boolean) -> Unit) {
+        IdlingResourceHelper.countingIdlingResource.increment()
 
         val channelsRequest = object : JsonArrayRequest(Method.GET, URL_GET_CHANNELS, null, Response.Listener { response ->
-            IdlingResourceHelper.countingIdlingResource.increment()
 
             try {
                 for (x in 0 until response.length()) {
@@ -58,10 +58,10 @@ object MessageService {
     fun getMessages(channelId: String, complete: (Boolean) -> Unit) {
 
         val url = "$URL_GET_MESSAGES$channelId"
+        IdlingResourceHelper.countingIdlingResource.increment()
 
         val messagesRequest = object : JsonArrayRequest(Method.GET, url, null, Response.Listener { response ->
             clearMessages()
-            IdlingResourceHelper.countingIdlingResource.increment()
 
             try {
                 for (x in 0 until response.length()) {
