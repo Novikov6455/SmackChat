@@ -1,12 +1,10 @@
-package com.example.smack.Tests
+package com.example.smack.Tests.artifactTests
 
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.*
-import android.support.test.filters.LargeTest
 import android.support.test.rule.ActivityTestRule
-import android.support.test.runner.AndroidJUnit4
 import android.view.View
 import android.view.ViewGroup
 import com.example.smack.R
@@ -19,14 +17,15 @@ import org.hamcrest.TypeSafeMatcher
 import org.hamcrest.core.IsInstanceOf
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 
-@LargeTest
-@RunWith(AndroidJUnit4::class)
+//@LargeTest
+//@RunWith(AndroidJUnit4::class)
 class LoginBtnTest {
 
-    @Rule
-    @JvmField
+//    @Rule
+    @get:Rule
+
+//    @JvmField
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
     @Test

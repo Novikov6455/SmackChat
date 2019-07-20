@@ -21,6 +21,7 @@ import com.example.smack.Model.Channel
 import com.example.smack.Model.Message
 import com.example.smack.R
 import com.example.smack.Services.AuthService
+import com.example.smack.Services.IdlingResourceHelper
 import com.example.smack.Services.MessageService
 import com.example.smack.Services.UserDataService
 import com.example.smack.Utilities.BROADCAST_USER_DATA_CHANGE
@@ -41,8 +42,12 @@ class MainActivity : AppCompatActivity() {
     var selectedChannel: Channel? = null
 
     private fun setupAdapters() {
+//        IdlingResourceHelper.countingIdlingResource.increment()
+
         channelAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, MessageService.channels)
         channel_list.adapter = channelAdapter
+//        IdlingResourceHelper.countingIdlingResource.decrement()
+
 
         messageAdapter = MessageAdapter(this, MessageService.messages)
         messageListView.adapter = messageAdapter
@@ -73,7 +78,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (App.prefs.isLoggedIn) {
+            IdlingResourceHelper.countingIdlingResource.increment()
+
             AuthService.findUserByEmail(this) {}
+            IdlingResourceHelper.countingIdlingResource.decrement()
         }
     }
 
@@ -86,6 +94,8 @@ class MainActivity : AppCompatActivity() {
     private val userDataChangeReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
             if (App.prefs.isLoggedIn) {
+                IdlingResourceHelper.countingIdlingResource.increment()
+
                 userNameNavHeader.text = UserDataService.name
                 userEmailNavHeader.text = UserDataService.email
                 val resourceId = resources.getIdentifier(UserDataService.avatarName, "drawable",
@@ -103,6 +113,8 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 }
+                IdlingResourceHelper.countingIdlingResource.decrement()
+
             }
         }
     }

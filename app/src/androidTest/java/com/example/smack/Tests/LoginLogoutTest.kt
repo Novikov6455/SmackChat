@@ -5,7 +5,7 @@ import android.support.test.filters.LargeTest
 import com.example.smack.Screens.Lev02LoginScreen
 import org.junit.Test
 
-@LargeTest
+//@LargeTest
 // @RunWith(AndroidJUnit4::class)
 class LoginLogoutTest : BaseTest() {
 
@@ -21,6 +21,8 @@ class LoginLogoutTest : BaseTest() {
         lev03MainActivityScreen.submitLogOut()
     }
 
+    // Negative testing *******************************************************
+
     @Test
     fun invalidLogIn() {
         val lev02LoginScreen: Lev02LoginScreen = startAppAndGoToLoginScreen()
@@ -31,7 +33,7 @@ class LoginLogoutTest : BaseTest() {
         lev02LoginScreen.tapLoginSubmitBtn()
         assert(lev02LoginScreen.checkIsNotLoggedIn())
         // teardown
-        pressBack()
+//        pressBack()
     }
 
     @Test
@@ -43,8 +45,6 @@ class LoginLogoutTest : BaseTest() {
 
         lev02LoginScreen.tapLoginSubmitBtn()
         assert(lev02LoginScreen.checkIsNotLoggedIn())
-        // teardown
-        pressBack()
     }
 
     @Test
@@ -56,8 +56,6 @@ class LoginLogoutTest : BaseTest() {
 
         lev02LoginScreen.tapLoginSubmitBtn()
         assert(lev02LoginScreen.checkIsNotLoggedIn())
-        // teardown
-        pressBack()
     }
 
     @Test
@@ -69,8 +67,6 @@ class LoginLogoutTest : BaseTest() {
 
         lev02LoginScreen.tapLoginSubmitBtn()
         assert(lev02LoginScreen.checkIsNotLoggedIn())
-        // teardown
-        pressBack()
     }
 
     @Test
@@ -82,7 +78,5 @@ class LoginLogoutTest : BaseTest() {
 
         lev02LoginScreen.tapLoginSubmitBtn()
         assert(lev02LoginScreen.checkIsNotLoggedIn())
-        // teardown
-        pressBack()
     }
 }
