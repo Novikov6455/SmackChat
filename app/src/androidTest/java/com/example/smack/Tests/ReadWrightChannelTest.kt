@@ -14,7 +14,7 @@ class ReadWrightChannelTest : BaseTest() {
     val testMessage = "I test this channel at " + dateString()
 
     @Test
-    fun userMainFunctionalityOfChannel() {
+    fun userMainFunctionalityOfChannel01() {
         //      setup
         startAppAndGoToLoginScreen()
         var lev03MainActivityScreen = loginWithValidCredentials()
@@ -41,7 +41,7 @@ class ReadWrightChannelTest : BaseTest() {
     }
 
     @Test
-    fun userAbleWrightInChannel() {
+    fun userMainFunctionalityOfChannel02() {
         //      setup
         startAppAndGoToLoginScreen()
         var lev03MainActivityScreen = loginWithValidCredentials()
@@ -55,7 +55,7 @@ class ReadWrightChannelTest : BaseTest() {
         lev04ChannelContent.submitMessage()
         lev04ChannelContent.isMessageVisible(testMessage)
 
-        // teardown
+        //      teardown
         lev04ChannelContent.tapToolbarBtn()
         lev03MainActivityScreen.submitLogOut()
     }
